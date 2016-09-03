@@ -1,12 +1,12 @@
 import pandas as pd
 import os
 import datetime
-
+from config import *
 
 # Set Directory Paths/Keys
-os.chdir('~/Box Sync/Summer 2016/finance_app/')
-dl_dir = '~/Downloads/transactions.csv'
-out_dir = '~/Dropbox/Finance_App.xlsx'
+dl_dir = dirs['dl']
+out_dir = dirs['out']
+
 
 # Todo: Autodownload
 
