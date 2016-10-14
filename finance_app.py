@@ -30,19 +30,20 @@ if __name__ == '__main__':
 	travel = ['Travel','Coach Bus','Air Travel','Hotel']
 	drinks = ['Alcohol & Bars']
 	sport = ['Sports','Sporting Goods','Hobbies']
-	shopping = ['Electronics & Software','Music','Books','Clothing','Books & Supplies','Gift','Office Supplies','Mobile Phone'] # should it be a set?
+	shopping = ['Shopping', 'Electronics & Software','Music','Books','Clothing','Books & Supplies','Gift','Office Supplies','Mobile Phone'] # should it be a set?
 	entertainment = ['Event Tickets','Entertainment','Amusement','Arts']
 	fees = ['ATM Fee','Finance Charge','Fees & Charges','Bank Fee','State Tax','Federal Tax','Service Fee']
 	misc = ['Printing','Hair','Uncategorized','Business Services','Transfer for Cash Spending','Doctor','Eyecare','Misc Expenses']
-	home = ['Home','Utilities','Mortgage & Rent','Rent', 'Home Improvement']
+	home = ['Home','Utilities','Mortgage & Rent','Rent', 'Home Id==mprovement']
 	edu = ['Education','Tuition']
+	income = ['Income', 'Returned Purchase']
+	airbnb = ['Rent Income']
+	hidden = ['Hide from Budgets & Trends', 'Transfer', 'Transfer for Cash Spending']
+
 
 	# Create Nested List
 	llexpenses = [food, coffee, transport, travel, drinks, sport, shopping, entertainment, fees, misc, home, edu]
-
-	# Don't really know what this does
-	llnames = ['food','coffee','transport','travel','drinks','sport','shopping','entertainment','fees','misc', 'home', 'edu']
-	hidden = ['Hide from Budgets & Trends']
+	llother = [income, airbnb, hidden]
 
 	comparison = compare_expenses(llexpenses, df.Category.unique().tolist())
 
