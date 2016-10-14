@@ -33,17 +33,18 @@ if __name__ == '__main__':
 	shopping = ['Arts','Shopping', 'Electronics & Software','Music','Books','Clothing','Books & Supplies','Gift','Office Supplies','Mobile Phone','Pharmacy']
 	entertainment = ['Event Tickets','Entertainment','Amusement','Arts', 'Movies & DVDs']
 	fees = ['ATM Fee','Finance Charge','Fees & Charges','Bank Fee','State Tax','Federal Tax','Service Fee']
-	misc = ['Printing','Hair','Uncategorized','Business Services','Transfer for Cash Spending','Doctor','Eyecare','Misc Expenses']
+	misc = ['Service & Parts', 'Cash & ATM', 'Legal', 'Printing','Hair','Uncategorized','Business Services','Transfer for Cash Spending','Doctor','Eyecare','Misc Expenses']
 	home = ['Home','Utilities','Mortgage & Rent','Rent', 'Home Improvement']
 	edu = ['Education','Tuition']
-	income = ['Income', 'Returned Purchase']
-	airbnb = ['Rent Income']
+	income = ['Interest Income', 'Paycheck', 'Income', 'Returned Purchase', 'Reimbursement']
+	airbnb = ['Rental Income']
 	hidden = ['Hide from Budgets & Trends', 'Transfer', 'Transfer for Cash Spending']
 
 	# Create Nested List
 	llexpenses = [food, coffee, transport, travel, drinks, sport, shopping, entertainment, fees, misc, home, edu, income, airbnb, hidden]
+	mint = df.Category.unique().tolist()
 
-	comparison = compare_expenses(llexpenses, df.Category.unique().tolist())
+	comparison = set(mint) - set(list(itertools.chain(*userlist)))
 
 
 # EXTRA
