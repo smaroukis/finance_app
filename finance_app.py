@@ -30,20 +30,18 @@ if __name__ == '__main__':
 	travel = ['Travel','Coach Bus','Air Travel','Hotel']
 	drinks = ['Alcohol & Bars']
 	sport = ['Sports','Sporting Goods','Hobbies']
-	shopping = ['Shopping', 'Electronics & Software','Music','Books','Clothing','Books & Supplies','Gift','Office Supplies','Mobile Phone'] # should it be a set?
-	entertainment = ['Event Tickets','Entertainment','Amusement','Arts']
+	shopping = ['Arts','Shopping', 'Electronics & Software','Music','Books','Clothing','Books & Supplies','Gift','Office Supplies','Mobile Phone','Pharmacy']
+	entertainment = ['Event Tickets','Entertainment','Amusement','Arts', 'Movies & DVDs']
 	fees = ['ATM Fee','Finance Charge','Fees & Charges','Bank Fee','State Tax','Federal Tax','Service Fee']
 	misc = ['Printing','Hair','Uncategorized','Business Services','Transfer for Cash Spending','Doctor','Eyecare','Misc Expenses']
-	home = ['Home','Utilities','Mortgage & Rent','Rent', 'Home Id==mprovement']
+	home = ['Home','Utilities','Mortgage & Rent','Rent', 'Home Improvement']
 	edu = ['Education','Tuition']
 	income = ['Income', 'Returned Purchase']
 	airbnb = ['Rent Income']
 	hidden = ['Hide from Budgets & Trends', 'Transfer', 'Transfer for Cash Spending']
 
-
 	# Create Nested List
-	llexpenses = [food, coffee, transport, travel, drinks, sport, shopping, entertainment, fees, misc, home, edu]
-	llother = [income, airbnb, hidden]
+	llexpenses = [food, coffee, transport, travel, drinks, sport, shopping, entertainment, fees, misc, home, edu, income, airbnb, hidden]
 
 	comparison = compare_expenses(llexpenses, df.Category.unique().tolist())
 
@@ -51,4 +49,4 @@ if __name__ == '__main__':
 # EXTRA
 
 # df.loc[df['col'].isin(list)] || df.['col'].isin(list).all(0)
-#df['start date':'end date']
+#df['start date':'end date'
