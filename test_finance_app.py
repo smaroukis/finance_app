@@ -1,4 +1,5 @@
 import unittest
+import itertools
 
 class BasicTest(unittest.TestCase):
 	def test_all_categories(self):
@@ -20,6 +21,9 @@ class BasicTest(unittest.TestCase):
 		llexpenses = [food, coffee, transport, travel, drinks, sport, shopping, entertainment, fees, misc, home, edu, income, airbnb, hidden]
 		mint = df.Category.unique().tolist()
 
-		comparison = set(mint) - set(list(itertools.chain(*userlist)))
+		comparison = set(mint) - set(list(itertools.chain(*llexpenses)))
 
-		selfAssert(comparison,set([]))
+		self.AssertEqual(comparison, set([]))
+
+if __name__ == '__main__':
+	unittest.main()
