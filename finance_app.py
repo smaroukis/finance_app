@@ -30,25 +30,26 @@ airbnb = ['Rental Income']
 hidden = ['Hide from Budgets & Trends', 'Transfer', 'Transfer for Cash Spending']
 
 # Nested List of Expenses Should be all of the above (Todo: How to check variable names are in list?)
-list_expenses = [food, coffee, transport, travel, drinks, sport, shopping, entertainment, fees, misc, home, edu, income,
+list_all_categories = [food, coffee, transport, travel, drinks, sport, shopping, entertainment, fees, misc, home, edu, income,
 			  airbnb, hidden]
 
 # Expenses that aren't accounted for
-expenses_user = list(itertools.chain(*list_expenses)) # use itertools module to iterate over flattened list
+expenses_user = list(itertools.chain(*list_all_categories)) # use itertools module to iterate over flattened list
 expenses = df.Category.unique().tolist() # all categories
 
 
-def compare_expenses(user_list, mint_list):
-	return set(mint_list) - set(user_list)
+def compare_expenses(superset, subset):
+	# Return Categories that are in Mint but not User Defined
+	return set(superset) - set(subset)
 
 
 if __name__ == '__main__':
 	#df = df.truncate(after = '07/01/2016')
 
+	# Print
 	# Just Compare
 	expenses_diff = compare_expenses(expenses, expenses_user)
 	print(expenses_diff)
-
 # EXTRA
 
 # df.loc[df['col'].isin(list)] || df.['col'].isin(list).all(0)
