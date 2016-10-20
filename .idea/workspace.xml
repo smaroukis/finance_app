@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="97fa8285-955e-43bd-81a0-94eb7ad70a68" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.travis.yml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/finance_app.py" afterPath="$PROJECT_DIR$/finance_app.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.travis.yml" afterPath="$PROJECT_DIR$/.travis.yml" />
     </list>
     <ignored path="Finance_app.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -512,7 +511,19 @@
       <option name="project" value="LOCAL" />
       <updated>1476995495795</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="adding travis and coveralls integration">
+      <created>1476996509819</created>
+      <option name="number" value="00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1476996509819</updated>
+    </task>
+    <task id="LOCAL-00018" summary="adding travis and coveralls integration">
+      <created>1476996906823</created>
+      <option name="number" value="00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1476996906823</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TodoView" selected-index="4">
@@ -594,7 +605,8 @@
     <MESSAGE value="use python3 for testing" />
     <MESSAGE value="added coverage, next to add coveralls" />
     <MESSAGE value="problem with set differnce" />
-    <option name="LAST_COMMIT_MESSAGE" value="problem with set differnce" />
+    <MESSAGE value="adding travis and coveralls integration" />
+    <option name="LAST_COMMIT_MESSAGE" value="adding travis and coveralls integration" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />

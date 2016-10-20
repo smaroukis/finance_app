@@ -2,10 +2,10 @@ language: python
 python:
  - "3.5"
 before_install:
- - pip install coverage
+ - pip install pytest pytest-cov
  - pip install coveralls
 # run tests
 script:
  - coverage run test_finance_app.py
 after_success:
- coveralls
+ - coveralls
