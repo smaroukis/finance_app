@@ -5,23 +5,31 @@ import os
 import datetime
 from config import *
 
+# Set Some Variables
+dl_dir = dirs['dl']
+out_dir = dirs['out']
+
+# Load Data (Need outside of main() for testing)
+
+
+def load_data():
+    # Read Data in, index as datetime indices
+    return pd.read_csv(dl_dir, parse_dates='Date', index_col='Date')
 
 
 def compare_expenses(user_list, mint_list):
 	return set(mint) - set(list(itertools.chain(*userlist)))
+
 
 # Expenses that aren't accounted for
 expenses_user = list(itertools.chain(*llexpenses)) # use itertools module to iterate over flattened list
 expenses = df.Category.unique().tolist() # all categories
 set(expenses_user) ^ set(expenses) # now write a test for this
 
-if __name__ == '__main__':
-	# Set Directory Paths/Keys
-	dl_dir = dirs['dl']
-	out_dir = dirs['out']
 
+if __name__ == '__main__':
 	# Read Data in, index as datetime indices
-	df = pd.read_csv(dl_dir, parse_dates = 'Date', index_col = 'Date')
+	df = load_data() #.read_csv(dl_dir, parse_dates = 'Date', index_col = 'Date')
 	#df = df.truncate(after = '07/01/2016')
 	# Defining Groups
 	food = ['Restaurants','Fast Food','Groceries','Food & Dining']
