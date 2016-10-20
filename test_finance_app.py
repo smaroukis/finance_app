@@ -1,5 +1,4 @@
 import unittest
-import itertools
 
 from finance_app import *
 

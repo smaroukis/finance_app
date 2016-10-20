@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="97fa8285-955e-43bd-81a0-94eb7ad70a68" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/finance_app.py" afterPath="$PROJECT_DIR$/finance_app.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test_finance_app.py" afterPath="$PROJECT_DIR$/test_finance_app.py" />
     </list>
     <ignored path="Finance_app.iws" />
@@ -28,8 +27,8 @@
       <file leaf-file-name="test_finance_app.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/test_finance_app.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="11" column="26" selection-start-line="11" selection-start-column="26" selection-end-line="11" selection-end-column="26" />
+            <state relative-caret-position="180">
+              <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
               <folding>
                 <element signature="e#0#15#0" expanded="true" />
               </folding>
@@ -40,8 +39,8 @@
       <file leaf-file-name="Makefile" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Makefile">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="15">
-              <caret line="1" column="22" selection-start-line="1" selection-start-column="22" selection-end-line="1" selection-end-column="22" />
+            <state relative-caret-position="0">
+              <caret line="0" column="5" selection-start-line="0" selection-start-column="5" selection-end-line="0" selection-end-column="5" />
               <folding />
             </state>
           </provider>
@@ -108,11 +107,11 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/Week_3_analysis.ipynb" />
-        <option value="$PROJECT_DIR$/Makefile" />
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/config.py" />
         <option value="$PROJECT_DIR$/finance_app.py" />
         <option value="$PROJECT_DIR$/test_finance_app.py" />
+        <option value="$PROJECT_DIR$/Makefile" />
       </list>
     </option>
   </component>
@@ -498,7 +497,14 @@
       <option name="project" value="LOCAL" />
       <updated>1476990299819</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="test working in python/terminal but not with makefile">
+      <created>1476990731276</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1476990731276</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TodoView" selected-index="4">
@@ -576,7 +582,8 @@
     <MESSAGE value="removing stuff from main for testing purposes" />
     <MESSAGE value="removed download function" />
     <MESSAGE value="main not working yet" />
-    <option name="LAST_COMMIT_MESSAGE" value="main not working yet" />
+    <MESSAGE value="test working in python/terminal but not with makefile" />
+    <option name="LAST_COMMIT_MESSAGE" value="test working in python/terminal but not with makefile" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -939,16 +946,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Makefile">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="22" selection-start-line="1" selection-start-column="22" selection-end-line="1" selection-end-column="22" />
+        <state relative-caret-position="0">
+          <caret line="0" column="5" selection-start-line="0" selection-start-column="5" selection-end-line="0" selection-end-column="5" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/test_finance_app.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" column="26" selection-start-line="11" selection-start-column="26" selection-end-line="11" selection-end-column="26" />
+        <state relative-caret-position="180">
+          <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
           <folding>
             <element signature="e#0#15#0" expanded="true" />
           </folding>
