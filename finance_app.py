@@ -5,16 +5,10 @@ import os
 import datetime
 from config import *
 
-# Set Some Variables
-dl_dir = dirs['dl']
-out_dir = dirs['out']
+# transactions.csv path defined in config file
 
 # Load Data (Need outside of main() for testing)
-
-
-def load_data():
-    # Read Data in, index as datetime indices
-    return pd.read_csv(dl_dir, parse_dates='Date', index_col='Date')
+df = pd.read_csv(dirs['dl'], parse_dates='Date', index_col='Date')
 
 
 def compare_expenses(user_list, mint_list):
