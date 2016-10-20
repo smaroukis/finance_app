@@ -47,7 +47,7 @@ if __name__ == '__main__':
 
 	# Just Compare
 	expenses_diff = compare_expenses(expenses, expenses_user)
-	print expenses_diff
+	print(expenses_diff)
 
 # EXTRA
 
