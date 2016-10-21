@@ -54,6 +54,14 @@ def compare_expenses(superset, subset):
 if __name__ == '__main__':
 	#df = df.truncate(after = '07/01/2016')
 
+	today = datetime.date.today()
+	idx = (today.weekday() + 1) % 7 # 0 Indexed from Sunday
+	last_sun = today - datetime.timedelta(idx)
+	prev_sun = today - datetime.timedelta(7+idx)
+	prev_sat = today - datetime.timedelta(7+idx-6)
+	# Must index by range
+	print(prev_sat)
+
 	# Print
 	# Just Compare
 	expenses_diff = compare_expenses(expenses, expenses_user)
