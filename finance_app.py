@@ -37,6 +37,8 @@ list_all_categories = [food, coffee, transport, travel, drinks, sport, shopping,
 expenses_user = list(itertools.chain(*list_all_categories)) # use itertools module to iterate over flattened list
 expenses = df.Category.unique().tolist() # all categories
 
+
+# Monthly Budgets
 def budgets():
 	bdgts = {'food': 400, 'coffee':25, 'sport':75, 'shopping':50 }
 
