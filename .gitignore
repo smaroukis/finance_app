@@ -1,1 +1,5 @@
 .idea*
+.ipynb*
+.coverage
+__pycache__/
+finance_app.pyc
