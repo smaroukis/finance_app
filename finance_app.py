@@ -42,6 +42,9 @@ expenses = df.Category.unique().tolist() # all categories
 def budgets():
 	bdgts = {'food': 400, 'coffee':25, 'sport':75, 'shopping':50 }
 
+def last_wk_data(_df):
+	last_wk = datetime.
+
 
 def compare_expenses(superset, subset):
 	# Return Categories that are in Mint but not User Defined
