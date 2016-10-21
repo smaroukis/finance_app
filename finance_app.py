@@ -22,7 +22,7 @@ shopping = ['Arts', 'Shopping', 'Electronics & Software', 'Music', 'Books', 'Clo
 entertainment = ['Event Tickets', 'Entertainment', 'Amusement', 'Arts', 'Movies & DVDs']
 fees = ['ATM Fee', 'Finance Charge', 'Fees & Charges', 'Bank Fee', 'State Tax', 'Federal Tax', 'Service Fee']
 misc = ['Service & Parts', 'Cash & ATM', 'Legal', 'Printing', 'Hair', 'Uncategorized', 'Business Services',
-		'Transfer for Cash Spending', 'Doctor', 'Eyecare', 'Misc Expenses']
+		'Transfer for Cash Spending', 'Doctor', 'Eyecare', 'Misc Expenses', 'Financial']
 home = ['Home', 'Utilities', 'Mortgage & Rent', 'Rent', 'Home Improvement']
 edu = ['Education', 'Tuition']
 income = ['Interest Income', 'Paycheck', 'Income', 'Returned Purchase', 'Reimbursement']
