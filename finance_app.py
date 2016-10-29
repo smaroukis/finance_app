@@ -30,7 +30,8 @@ airbnb = ['Rental Income']
 hidden = ['Hide from Budgets & Trends', 'Transfer', 'Transfer for Cash Spending']
 
 # Nested List of Expenses Should be all of the above (Todo: How to check variable names are in list?)
-list_all_categories = [food, coffee, transport, travel, drinks, sport, shopping, entertainment, fees, misc, home, edu, income,
+# Todo: want to be able to access 'food','coffee',etc as keys
+# list_all_categories = [food, coffee, transport, travel, drinks, sport, shopping, entertainment, fees, misc, home, edu, income,
 			  airbnb, hidden]
 
 # Expenses that aren't accounted for
@@ -49,6 +50,11 @@ def budgets():
 def compare_expenses(superset, subset):
 	# Return Categories that are in Mint but not User Defined
 	return set(superset) - set(subset)
+
+def print_report(_df, _category_list):
+	report_list = [_df.loc[_df.Category.isin(i).Amount.sum()] for i in _category_list]
+	# Index = keys of category list
+
 
 
 if __name__ == '__main__':
