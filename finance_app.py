@@ -14,7 +14,7 @@ df = pd.read_csv(dirs['transactions'], parse_dates=['Date'], index_col='Date')
 food = ['Restaurants', 'Fast Food', 'Groceries', 'Food & Dining']
 coffee = ['Coffee Shops']
 transport = ['Public Transportation', 'Gas & Fuel', 'Rental Car & Taxi', 'Auto & Transport', 'Parking']
-travel = ['Travel', 'Coach Bus', 'Air Travel', 'Hotel']
+travel = ['Travel', 'Coach Bus', 'Air Travel', 'Hotel','Bus/Train']
 drinks = ['Alcohol & Bars']
 sport = ['Sports', 'Sporting Goods', 'Hobbies']
 shopping = ['Arts', 'Shopping', 'Electronics & Software', 'Music', 'Books', 'Clothing', 'Books & Supplies', 'Gift',
@@ -31,8 +31,8 @@ hidden = ['Hide from Budgets & Trends', 'Transfer', 'Transfer for Cash Spending'
 
 # Nested List of Expenses Should be all of the above (Todo: How to check variable names are in list?)
 # Todo: want to be able to access 'food','coffee',etc as keys
-# list_all_categories = [food, coffee, transport, travel, drinks, sport, shopping, entertainment, fees, misc, home, edu, income,
-			  airbnb, hidden]
+list_all_categories = [food, coffee, transport, travel, drinks, sport, shopping, entertainment, fees, misc, home, edu, income, airbnb, hidden]
+names = ['food','coffee','transport','travel','drinks','sport','shopping','entertainment','fees','misc','home','edu','income']
 
 # Expenses that aren't accounted for
 expenses_user = list(itertools.chain(*list_all_categories)) # use itertools module to iterate over flattened list
