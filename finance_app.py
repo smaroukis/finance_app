@@ -46,6 +46,19 @@ def budgets():
 #ddef last_wk_data(_df):
 
 
+def clean_df(_df, _st, _end, *, labels=None, cats=None, descr=None):
+	# labels and categories as list, exact match but descriptions will be transformed to regexp
+	df = _df.truncate(before=_end)
+	df = df.truncate(after=_st)
+	# Make sure "Categories" and "Labels" are in df
+	if labels:
+		df = df[~df.Labels.isin(labels)]
+	if cats:
+		df = df[~df.Category.isin(cats)]
+	if descr:
+		df = df[~df.Description.str.containts('|'.join(descr))]
+	return df
+
 
 def compare_expenses(superset, subset):
 	# Return Categories that are in Mint but not User Defined
@@ -58,15 +71,14 @@ def print_report(_df, _category_list):
 
 
 if __name__ == '__main__':
-	#df = df.truncate(after = '07/01/2016')
-
 	today = datetime.date.today()
 	idx = (today.weekday() + 1) % 7 # 0 Indexed from Sunday
-	last_sun = today - datetime.timedelta(idx)
-	prev_sun = today - datetime.timedelta(7+idx)
-	prev_sat = today - datetime.timedelta(7+idx-6)
-	# Must index by range
-	print(prev_sat)
+	sun1b4 = today - datetime.timedelta(idx)
+	sun2b4 = today - datetime.timedelta(7+idx)
+	sat1b4 = today - datetime.timedelta(7+idx-6)
+
+	last_week = clean_df(df, sun2b4, sat1b4, labels=['Hide'], cats=['Hide from Budgets & Trends'])
+
 
 	# Print
 	# Just Compare
