@@ -81,6 +81,9 @@ if __name__ == '__main__':
 	last_week_report = report_week(last_week, list_all_categories)
 	print(last_week_report)
 
+	# Now add to document:
+	last_week_report.to_csv('reports/report' + str(sun2b4) + '.csv')
+
 	# Just Compare
 	expenses_diff = compare_expenses(expenses, expenses_user)
 	print(expenses_diff)

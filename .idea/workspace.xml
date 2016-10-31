@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="97fa8285-955e-43bd-81a0-94eb7ad70a68" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Date Stuff.ipynb" afterPath="$PROJECT_DIR$/Date Stuff.ipynb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/finance_app.py" afterPath="$PROJECT_DIR$/finance_app.py" />
     </list>
     <ignored path="Finance_app.iws" />
@@ -50,8 +51,8 @@
       <file leaf-file-name="finance_app.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/finance_app.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.75663716">
-              <caret line="83" column="0" selection-start-line="83" selection-start-column="0" selection-end-line="83" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.44690266">
+              <caret line="69" column="51" selection-start-line="69" selection-start-column="51" selection-end-line="69" selection-end-column="51" />
               <folding>
                 <element signature="e#0#19#0" expanded="true" />
               </folding>
@@ -609,7 +610,13 @@
       <option name="project" value="LOCAL" />
       <updated>1477929480432</updated>
     </task>
-    <option name="localTasksCounter" value="35" />
+    <task id="LOCAL-00035" summary="report_week added">
+      <created>1477929766427</created>
+      <option name="number" value="00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1477929766427</updated>
+    </task>
+    <option name="localTasksCounter" value="36" />
     <servers />
   </component>
   <component name="TodoView" selected-index="4">
@@ -679,7 +686,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="adding tests?" />
     <MESSAGE value="removing stuff from main for testing purposes" />
     <MESSAGE value="removed download function" />
     <MESSAGE value="main not working yet" />
@@ -704,7 +710,8 @@
     <MESSAGE value="sf trip expenses, todo: access list_all_expenses upper superset categories as keys in dictionary" />
     <MESSAGE value="added function to parse a df based on date, labels, cats, and description regexps" />
     <MESSAGE value="fixed print report function&#10;" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixed print report function&#10;" />
+    <MESSAGE value="report_week added" />
+    <option name="LAST_COMMIT_MESSAGE" value="report_week added" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1088,8 +1095,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/finance_app.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.75663716">
-          <caret line="83" column="0" selection-start-line="83" selection-start-column="0" selection-end-line="83" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.44690266">
+          <caret line="69" column="51" selection-start-line="69" selection-start-column="51" selection-end-line="69" selection-end-column="51" />
           <folding>
             <element signature="e#0#19#0" expanded="true" />
           </folding>
