@@ -65,8 +65,10 @@ def compare_expenses(superset, subset):
 	return set(superset) - set(subset)
 
 
-def print_report(_df, _cat_list):
-	return [_df.loc[_df.Category.isin(i)].Amount.sum() for i in _cat_list]
+def report_week(_df, _cat_list):
+	series = [_df.loc[_df.Category.isin(i)].Amount.sum() for i in _cat_list]
+	report = pd.DataFrame(columns = ['Last_Week'], index = names, data = series)
+	return report
 
 if __name__ == '__main__':
 	today = datetime.date.today()
@@ -76,9 +78,9 @@ if __name__ == '__main__':
 	sat1b4 = today - datetime.timedelta(7+idx-6)
 
 	last_week = clean_df(df, sun2b4, sat1b4, labels=['Hide'], cats=['Hide from Budgets & Trends'])
-	last_week_report = print_report(last_week, list_all_categories)
+	last_week_report = report_week(last_week, list_all_categories)
 	print(last_week_report)
-	# Print
+
 	# Just Compare
 	expenses_diff = compare_expenses(expenses, expenses_user)
 	print(expenses_diff)
