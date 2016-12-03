@@ -1,7 +1,5 @@
 import pandas as pd
 import itertools
-import numpy as np
-import os
 import datetime
 from config import *
 
