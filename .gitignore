@@ -4,3 +4,4 @@
 __pycache__/
 transactions.csv
 finance_app.pyc
+config.py
