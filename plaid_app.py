@@ -2,7 +2,7 @@ from plaid import Client
 import requests
 from plaid import errors as plaid_errors
 from plaid.utils import json
-import pprint
+from pprint import pprint as pp
 from config import *
 
 client = Client(client_id='test_id', secret='test_secret', access_token='usertoken')
@@ -56,22 +56,6 @@ def get_categories():
 # tcfaccess_token = "test_ins_100088"
 # tcfclient = Client(client_id='test_id', secret='test_secret', access_token=tcfaccess_token)
 
-client = Client(client_id='test_id', secret='test_secret', access_token='usertoken')
-client.config({'url':'https://tartan.plaid.com'})
-account_type = 'ins_100088'
-user = 'plaid_test'
-pwd = 'plaid_good'
-response = client.connect(account_type, {'username': user, 'password': pwd})
-response = client.connect_step(account_type, 'tomato')
-sbtrans = client.connect_get().json()['transactions']
-keepkeys = ['_account', '_id', 'amount', 'category', 'date', 'name', 'pending']
-clean = []
-for d in sbtrans:
-    clean = [ clean, {key: d[key] for key in keepkeys }]
-# TODO fails because "category" is a list of categories
-clean = { key: sbtrans[key] for key in keepkeys }
-type(sbtrans[0])
-sbtrans
 
 # 1) client_id, secret, username, password, type, options
 # try:
