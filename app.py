@@ -1,44 +1,24 @@
-from resources import *
-import pandas as pd
-import datetime
+import pyrebase
 
+# db updated i pyrebase_config
+def filter_amt_over(user, amount):
+    # assume the account has been instantiated
+    # user here is the firebase db child, let's make it match the plaid username
+    trans=get_transactions()
+    is_over=[i for i in trans if i['amount']>amount]
+    return is_over
 
-def main():
-	# Read Recently Downloaded Transactions File & Expenses File
-	recent = pd.read_csv(downloaded)
-	expenses = pd.read_excel(expense_path)
+def filter_amt_under():
+    pass
 
-	# Only need first hundred TODO set a last updated key or var
-	expenses_df = expenses[:99]
-	recent_df = recent[:99]
+def filter_date_range(user, start, end):
+    # Returns inclusive list. Inputs should be YYYY-MM-DD string
+    trans=get_transactions()
+    data=[i for i in trans if i['date']<=end if i['date']>=start]
+    return data
 
-	# Return indexes of new df (recent) matching old df (expenses), Find contiguous indices, (like 5 in a row), find this
-	#  row in old df, discard rest in new, discard top of old, concat
-	count = 0
-	indices = []
-	for ix_recent, recent_data in recent_df.iterrows():
-		for ix_expenses, expenses_data in expenses_df.iterrows():
-			# if not found in any expenses_df row, print row
-			if (expenses_data[1] == recent_data[1] and expenses_df[2] == recent_data[2]):  # TODO
-				count += 1
-		if count == 0:
-			# print index_data, row_data[0], row_data[1], row_data[3]
-			indices.append(ix_recent)
+def get_categories():
+    pass #TODO return unique categories
 
-		count = 0
-
-	# Get the rows of the recent data that are not repetitions
-	newdf = recent_df.iloc[indices].sort_values('Date', ascending=False)
-
-	# Todo Insert and Prepend inside the Excel File
-
-	# Create a new file, in 'data-07-20' format
-	output = newdf.append(expenses_df, ignore_index=True)
-	foutname = 'data-' + str(datetime.datetime.today().month) + '-' + str(datetime.datetime.today().day)
-
-	# Writeout
-	newdf.to_csv(os.path.join(output_dir, foutname), index=False)
-
-
-if __name__ == '__main__':
-	main()
+def filter_categories():
+    pass
