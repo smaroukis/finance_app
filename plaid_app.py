@@ -5,6 +5,8 @@ from plaid.utils import json
 from pprint import pprint as pp
 from config import *
 
+# post data to firebase app
+
 client = Client(client_id='test_id', secret='test_secret', access_token='usertoken')
 client.config({'url':'https://tartan.plaid.com'})
 
@@ -60,8 +62,11 @@ def filter_amt_over(amount):
 def filter_amt_under():
     pass
 
-def filter_date_range():
-    pass
+def filter_date_range(start, end):
+    # Returns inclusive list. Inputs should be YYYY-MM-DD string
+    trans=get_transactions()
+    data=[i for i in trans if i['date']<=end if i['date']>=start]
+    return data
 
 def get_categories():
     pass #TODO return unique categories
