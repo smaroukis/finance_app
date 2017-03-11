@@ -50,8 +50,27 @@ def clean_transactions():
     keepkeys = ['_account', '_id', 'amount', 'category', 'date', 'name', 'pending']
     clean = { key: dirty[key] for key in keepkeys }
 
+def filter_amt_over(amount):
+    # assume the account has been instantiated
+    # note that we should just get this from the DB, not calling the api
+    trans=get_transactions()
+    is_over=[i for i in trans if i['amount']>amount]
+    return is_over
+
+def filter_amt_under():
+    pass
+
+def filter_date_range():
+    pass
+
 def get_categories():
     pass #TODO return unique categories
+
+def filter_categories():
+    pass
+
+# For Testing
+trans=get_transactions()
 
 # tcfaccess_token = "test_ins_100088"
 # tcfclient = Client(client_id='test_id', secret='test_secret', access_token=tcfaccess_token)
