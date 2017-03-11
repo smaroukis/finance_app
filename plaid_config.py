@@ -31,7 +31,7 @@ def get_response():
     return response.json() # This is a dict
 
 
-def get_transactions():
+def get_plaid_transactions():
     # Used to update the firebase database
     client = Client(client_id='test_id', secret='test_secret', access_token='usertoken')
     client.config({'url':'https://tartan.plaid.com'})
@@ -48,13 +48,13 @@ def get_transactions():
 def clean_transactions():
     # Get only the parts of transactions we care about
     # _account, _id, amount, category, date, name, pending
-    dirty = get_transactions()
+    dirty = get_plaid_transactions()
     keepkeys = ['_account', '_id', 'amount', 'category', 'date', 'name', 'pending']
     clean = { key: dirty[key] for key in keepkeys }
 
 
 # For Testing
-trans=get_transactions()
+trans=get_plaid_transactions()
 
 # tcfaccess_token = "test_ins_100088"
 # tcfclient = Client(client_id='test_id', secret='test_secret', access_token=tcfaccess_token)
