@@ -11,9 +11,34 @@ def db_init():
     db = firebase.database()
     return db
 # note: will have to add some user auth function first
-def update_db(child_id):
-    data=plaid_config.get_plaid_transactions()
-    db.child(child_id).push(data)
 
-def get_transactions(child_id):
-    return db.child(child_id).get().val()
+
+# For updating database
+def update_db(user):
+    response=plaid_config.get_plaid_response()
+    db.child(user).push(response)
+
+# For accessing database
+def get_response(user):
+    return db.child(user).get().val()]
+
+def get_transactions(user):
+    response=get_response(user)
+    balance = list(response.items())[0][1]['transactions'] # second index is 1 since 0 index is just the firebase key
+    return balance
+
+def get_balance(user):
+    # maybe add account, only gets first for now
+    response = get_response(user)
+    balance = list(response.items())[0][1]['accounts'][0]['balance']
+    return balance
+
+
+update_db('user1')
+resp = db.child('user1').get().val()
+
+resp[0]['transactions']
+
+resp.items()[0]['transactions']
+
+list(get_response('user1').items())[0][1]['accounts'][0]['balance']

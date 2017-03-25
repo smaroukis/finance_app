@@ -2,14 +2,30 @@ import pyrebase
 from pyrebase_config import update_db, get_transactions
 from config import twil_config
 from twilio.rest import TwilioRestClient
+from twilio import twiml
+from flask import Flask, request, redirect, url_for
 
+### Flask
+application = Flask(__name__)
+
+### Twilio: create client (sandbox/trial)
 client = TwilioRestClient(twil_config['test_account_sid'], twil_config['test_auth_token'])
-
 # message=client.messages.create(to=to_number, from=from_number, body=message)
-body="Hello World"
-message=client.messages.create(to=twil_config['to_number'], from_=twil_config['from_number'], body=body)
-# db updated i pyrebase_confi
+# message=client.messages.create(to=twil_config['to_number'], from_=twil_config['from_number'], body=body)
 # user="test"
+
+@application.route('/default')
+def default_info():
+    request = body.lower().strip()
+    # Return Current Balance and Prompt for Query
+    response = twiml.Response()
+    
+
+
+### Filter Functions
+
+def balance(user):
+
 
 def filter_amt_over(user, amount):
     # assume the account has been instantiated
