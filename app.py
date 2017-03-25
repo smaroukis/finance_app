@@ -1,5 +1,5 @@
 import pyrebase
-from pyrebase_config import update_db, get_transactions
+from pyrebase_config import update_db, get_transactions, get_balance
 from config import twil_config
 from twilio.rest import TwilioRestClient
 from twilio import twiml
@@ -15,12 +15,26 @@ client = TwilioRestClient(twil_config['test_account_sid'], twil_config['test_aut
 # user="test"
 
 @application.route('/default')
-def default_info():
+def bank_info():
     request = body.lower().strip()
-    # Return Current Balance and Prompt for Query
-    response = twiml.Response()
-    
+    # Return Current Balance and Prompt for Query (i.e. route to another)
+    bal=get_balance('user1')
+    for k, v in bal.items():
+        message += " {}: {} \n".format(k, v)
 
+    response = twiml.Response()
+
+    # ask for query or no?
+    response.redirect('/query', method='GET')
+
+    # return str(response)
+
+# use session key here somewhere
+# use url redirect
+
+
+@application.route('/query')
+def bank_query():
 
 ### Filter Functions
 
