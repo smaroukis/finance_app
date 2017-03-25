@@ -19,6 +19,8 @@ def root():
     # TODO user session cookies
     response = twiml.Response()
 
+    if 'hopslam' is in session:
+
     try:
         body = request.form['Body']
         print(body)
@@ -47,14 +49,11 @@ def return_balance(user):
     return message
 
 def launch_query(user):
-    message = "You just launched a query. Current options:\n"\
-        "-b  get transactions before date MM/DD/YYYY\n"\
-        "-a  get transactions after date MM/DD/YYYY\n"\
-        "-o  get all transactions over $X\n"\
-        "-u  get all transactions under $X\n"
-
-    # TODO could redirect here? 
-    return message
+    response = twiml.Response()
+    # TODO create session cookie to put in root route for query
+    response.redirect(url_for('query'))
+    session['hopslam'] = True
+    return str(response)
 
     # Redirect to /query which will prompt
     #response.redirect('/query', method='GET')
