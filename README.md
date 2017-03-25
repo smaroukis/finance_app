@@ -2,3 +2,6 @@
 [![Coverage Status](https://coveralls.io/repos/github/smaroukis/finance_app/badge.svg?branch=master)](https://coveralls.io/github/smaroukis/finance_app?branch=master)
 
 Currently under construction: working on plaid integration and defining classes for budgets.
+
+For the developer:
+ - ngrok: deploy with `ngrok http 5000`
