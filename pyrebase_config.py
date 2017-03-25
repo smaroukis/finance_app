@@ -32,13 +32,3 @@ def get_balance(user):
     response = get_response(user)
     balance = list(response.items())[0][1]['accounts'][0]['balance']
     return balance
-
-
-update_db('user1')
-resp = db.child('user1').get().val()
-
-resp[0]['transactions']
-
-resp.items()[0]['transactions']
-
-list(get_response('user1').items())[0][1]['accounts'][0]['balance']
