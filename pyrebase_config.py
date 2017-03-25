@@ -20,7 +20,7 @@ def update_db(user):
 
 # For accessing database
 def get_response(user):
-    return db.child(user).get().val()]
+    return db.child(user).get().val()
 
 def get_transactions(user):
     response=get_response(user)
@@ -32,3 +32,6 @@ def get_balance(user):
     response = get_response(user)
     balance = list(response.items())[0][1]['accounts'][0]['balance']
     return balance
+
+bal = get_balance('user1')
+bal

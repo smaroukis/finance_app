@@ -9,37 +9,64 @@ from flask import Flask, request, redirect, url_for
 application = Flask(__name__)
 
 ### Twilio: create client (sandbox/trial)
-client = TwilioRestClient(twil_config['test_account_sid'], twil_config['test_auth_token'])
+client = TwilioRestClient(twil_config['account_sid'], twil_config['auth_token'])
 # message=client.messages.create(to=to_number, from=from_number, body=message)
 # message=client.messages.create(to=twil_config['to_number'], from_=twil_config['from_number'], body=body)
 # user="test"
 
-@application.route('/default')
-def bank_info():
-    request = body.lower().strip()
-    # Return Current Balance and Prompt for Query (i.e. route to another)
-    bal=get_balance('user1')
-    for k, v in bal.items():
-        message += " {}: {} \n".format(k, v)
-
+@application.route('/')
+def root():
+    # TODO user session cookies
     response = twiml.Response()
 
-    # ask for query or no?
-    response.redirect('/query', method='GET')
+    try:
+        body = request.form['Body']
+        print(body)
+    except:
+        print("couldn't find message body")
+        messages = client.messages.list()
+        body = messages[0].body
 
-    # return str(response)
+    request = body.lower().strip() # TODO comes from Twilio? getting error
+    if request in ["balance", "bal", "b"]:
+        message = return_balance('user1')
+    elif request in ["query", "q"]:
+        message = launch_query('user1')
+    else:
+        message = "Usage: \n (1) 'balance', 'bal', or 'b' for "\
+            "account balance. \n (2) 'query', 'q' for launching a query.\n"
+
+    response.message(message)
+    return str(response)
+
+def return_balance(user):
+    bal=get_balance(user)
+    message = "balance\n"
+    for k, v in bal.items():
+        message += " {}: {} \n".format(k, v)
+    return message
+
+def launch_query(user):
+    message = "You just launched a query. Current options:\n"\
+        "-b  get transactions before date MM/DD/YYYY\n"\
+        "-a  get transactions after date MM/DD/YYYY\n"\
+        "-o  get all transactions over $X\n"\
+        "-u  get all transactions under $X\n"
+
+    # TODO could redirect here? 
+    return message
+
+    # Redirect to /query which will prompt
+    #response.redirect('/query', method='GET')
+
+    #return str(response)
 
 # use session key here somewhere
 # use url redirect
 
-
-@application.route('/query')
-def bank_query():
+#def bank_query():
 
 ### Filter Functions
-
-def balance(user):
-
 
 def filter_amt_over(user, amount):
     # assume the account has been instantiated
@@ -48,15 +75,15 @@ def filter_amt_over(user, amount):
     data=[i for i in trans if i['amount']>amount]
     return data
 
-def filter_amt_under():
+def filter_amt_under(user, amount):
     trans=get_transactions(user)
-    data=[i for i in trans if i['amount']>amount]
+    data=[i for i in trans if i['amount']<amount]
     return data
 
-def filter_date_range(user, start, end):
+def filter_date_range(user, before, after):
     # Returns inclusive list. Inputs should be YYYY-MM-DD string
     trans=get_transactions(user)
-    data=[i for i in trans if i['date']<=end if i['date']>=start]
+    data=[i for i in trans if i['date']<=before if i['date']>=after]
     return data
 
 def get_categories(user, query=None):
@@ -64,11 +91,13 @@ def get_categories(user, query=None):
     if query is None:
         # Get all
         trans=get_transactions(user)
-    else
+    else:
         trans=query
     return [i['category'] for i in  trans]
 
 def filter_categories():
     pass
 
+if __name__=="__main__":
+    application.run(debug=True)
 ### TWILIO functions
