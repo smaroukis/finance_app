@@ -1,5 +1,5 @@
 import pyrebase
-from pyrebase_config import update_db, get_transactions, get_balance
+from pyrebase_config import *
 from config import twil_config, secret_key
 from twilio.rest import TwilioRestClient
 from twilio import twiml
@@ -13,37 +13,37 @@ client = TwilioRestClient(twil_config['account_sid'], twil_config['auth_token'])
 # message=client.messages.create(to=twil_config['to_number'], from_=twil_config['from_number'], body=body)
 # user="test"
 
-@application.route('/')
+@application.route('/', methods=['POST','GET'])
 def root():
     response = twiml.Response()
-
-
-
+    print(session)
+    body=""
     try:
-        body = request.form['Body']
+        body = request.form['Body'] #doesn't work here
         print(body)
     except:
-        print("couldn't find message body")
-        messages = client.messages.list() # TODO ask Al what this does
-        body = messages[0].body
-
+        messages = client.messages.list()
+        body = messages[0].body # TODO works for now but need to change
+        print(body)
     request = body.lower().strip() # TODO comes from Twilio? getting error
-
-    print('session is: \n')
-    print(session)
     # Check to see if user has launched a query
+    if request in ["clear", "c"]:
+        print("Error on redirect, removing session key")
+        session.clear()
+        response.messsage("session cleared")
+        return str(response)
+
     if 'query' in session:
         try:
-            response.redirect('query') # to direct to query/<arg> use ..arg=value
+            response.redirect('query', methods=['POST']) # to direct to query/<arg> use ..arg=value
         except:
-            print("Error on redirect, removing session key")
-            session.pop('query', None)
+            print('redirect failed \n')# check where the resopnse from /query returns to
         return str(response)
 
     if request in ["balance", "bal", "b"]:
         message = return_balance('user1')
     elif request in ["query", "q"]:
-        message = launch_query()
+        message = launch_query(response)
     else:
         message = "Usage: \n (1) 'balance', 'bal', or 'b' for "\
             "account balance. \n (2) 'query', 'q' for launching a query.\n"
@@ -58,7 +58,7 @@ def return_balance(user):
         message += " {}: {} \n".format(k, v)
     return message
 
-def launch_query():
+def launch_query(response):
     session['query'] = 'launched'
     print(session)
     message = "You just launched a query. Current options:\n"\
@@ -66,7 +66,32 @@ def launch_query():
             "-a  get transactions after date MM/DD/YYYY\n"\
             "-o  get all transactions over $X\n"\
             "-u  get all transactions under $X\n"
-    return message # TODO can you redirect and return a message?
+    return str(message) # TODO can you redirect and return a message?
+
+@application.route('/query', methods=['POST','GET'])
+def query():
+    print("made it to /query\n")
+    try:
+        messages=client.messages.list()
+        body=messages[0].body
+        request=body.lower().strip()
+    except:
+        print('error getting body')
+    response = twiml.Response()
+
+    print("body: \n ")
+    print(request)
+
+    if session['query']=='launched':
+        # do the first thing, body of message already gotten ?? TODO Check
+        print('launched with body: \n')
+        print(body)
+        response.message('launched..\n'+str(body))
+        return str(response)
+
+    else:
+        pass
+        # Get
 
     # Redirect to /query which will prompt
     #response.redirect('/query', method='GET')
@@ -75,4 +100,5 @@ application.secret_key=secret_key
 
 if __name__=="__main__":
     application.run(debug=True)
+
 ### TWILIO functions

@@ -33,5 +33,33 @@ def get_balance(user):
     balance = list(response.items())[0][1]['accounts'][0]['balance']
     return balance
 
-bal = get_balance('user1')
-bal
+## Filter Functions    
+def filter_amt_over(user, amount):
+    # assume the account has been instantiated
+    # user here is the firebase db child, let's make it match the plaid username
+    trans=get_transactions(user)
+    data=[i for i in trans if i['amount']>amount]
+    return data
+
+def filter_amt_under(user, amount):
+    trans=get_transactions(user)
+    data=[i for i in trans if i['amount']<amount]
+    return data
+
+def filter_date_range(user, before, after):
+    # Returns inclusive list. Inputs should be YYYY-MM-DD string
+    trans=get_transactions(user)
+    data=[i for i in trans if i['date']<=before if i['date']>=after]
+    return data
+
+def get_categories(user, query=None):
+    """Get all the categories from a certain query"""
+    if query is None:
+        # Get all
+        trans=get_transactions(user)
+    else:
+        trans=query
+    return [i['category'] for i in  trans]
+
+def filter_categories():
+    pass
