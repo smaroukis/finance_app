@@ -18,6 +18,7 @@ def root():
     response = twiml.Response()
     print(session)
     body=""
+
     try:
         body = request.form['Body'] #doesn't work here
         print(body)
@@ -25,10 +26,11 @@ def root():
         messages = client.messages.list()
         body = messages[0].body # TODO works for now but need to change
         print(body)
+
     request = body.lower().strip() # TODO comes from Twilio? getting error
     # Check to see if user has launched a query
     if request in ["clear", "c"]:
-        print("Error on redirect, removing session key")
+        print("Removing session key \n")
         session.clear()
         response.messsage("session cleared")
         return str(response)
@@ -70,23 +72,24 @@ def launch_query(response):
 
 @application.route('/query', methods=['POST','GET'])
 def query():
-    print("made it to /query\n")
+    response = twiml.Response()
+    body=""
+
     try:
-        messages=client.messages.list()
-        body=messages[0].body
-        request=body.lower().strip()
+        #messages=client.messages.list()
+        #body=messages[0].body
+        body=request.form['Body'] # works
+        body=body.lower().strip()
     except:
         print('error getting body')
-    response = twiml.Response()
 
-    print("body: \n ")
-    print(request)
-
+# TODO add in filter functions now
     if session['query']=='launched':
-        # do the first thing, body of message already gotten ?? TODO Check
         print('launched with body: \n')
         print(body)
         response.message('launched..\n'+str(body))
+        
+
         return str(response)
 
     else:
