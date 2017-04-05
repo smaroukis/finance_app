@@ -29,7 +29,7 @@ def root():
 
     request = body.lower().strip() # TODO comes from Twilio? getting error
     # Check to see if user has launched a query
-    if request in ["clear", "c"]:
+    if request in ["x", "quit"]: # TODO set cookies to expire after X mins
         print("Removing session key \n")
         session.clear()
         response.messsage("session cleared")
@@ -48,8 +48,9 @@ def root():
         message = launch_query(response)
     else:
         message = "Usage: \n (1) 'balance', 'bal', or 'b' for "\
-            "account balance. \n (2) 'query', 'q' for launching a query.\n"
-
+            "account balance. \n (2) 'query', 'q' for launching a query.\n"\
+            " (3) 'quit'/'x' to end the session.\n"
+            
     response.message(message)
     return str(response)
 
@@ -88,7 +89,7 @@ def query():
         print('launched with body: \n')
         print(body)
         response.message('launched..\n'+str(body))
-        
+
 
         return str(response)
 
